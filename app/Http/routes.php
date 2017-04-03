@@ -27,4 +27,6 @@ Route::get('/increment/{number}', function($number) {
     return ++$number;
 });
 
+Route::resource('posts', 'PostsController');
+
 
