@@ -30,9 +30,8 @@ Route::get('/increment/{number}', function($number) {
 Route::resource('posts', 'PostsController');
 
 Route::get('orm-test', function() {
-    $post = \App\Models\Post::find('1');
-    $post -> delete();
-    return "it's done";
+    $posts = \App\Models\Post::all();
+    return $posts;
 });
 
 

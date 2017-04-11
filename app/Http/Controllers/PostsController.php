@@ -16,7 +16,9 @@ class PostsController extends Controller
      */
     public function index()
     {
-        return "Show a list of all posts";
+        var_dump("it's running");
+        $posts = \App\Models\Post::all();
+        return $posts;
     }
 
     /**
@@ -37,7 +39,13 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        return "save a new post";
+        // var_dump($request->title);
+        $post = new \App\Models\Post();
+        $post -> title = $request -> title;
+        $post -> content = $request -> content;
+        $post -> url = $request -> url;
+        $post -> save();
+        return redirect('posts/index');
     }
 
     /**
@@ -48,7 +56,8 @@ class PostsController extends Controller
      */
     public function show($id)
     {
-        return "show a specific post: " . $id;
+        $post = \App\Models\Post::find($id);
+        return $post;
     }
 
     /**
@@ -84,6 +93,7 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        return "Delete a specific post";
+        $post = \App\Models\Post::find($id);
+        $post -> delete();
     }
 }
