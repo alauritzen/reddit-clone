@@ -31,6 +31,8 @@ Route::resource('posts', 'PostsController');
 
 Route::get('orm-test', function() {
     $post = \App\Models\Post::find('1');
+    $post -> title = "New Title Goes Here";
+    $post -> save();
     return $post;
 });
 
